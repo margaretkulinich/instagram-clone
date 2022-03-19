@@ -1,0 +1,381 @@
+$shadow-color: #DBDBDB;
+@mixin flexible() {
+    display: flex;
+    align-items: center;
+}
+@mixin alingPosition() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin fullSize() {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+@mixin centerElement() {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-color: #fafafa;
+    margin: 0;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 1px;
+    height: 100vh;
+}
+
+.header {
+    height: 60px;
+    background-color: #FFF;
+    width: 100%;
+    padding: 3px 0px;
+    box-shadow: 0px 1px 0px $shadow-color;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 3;
+}
+
+.feed {
+    max-width: 975px;
+    margin: auto;
+}
+
+.header-links-block {
+    @include flexible ();
+    @include centerElement();
+    padding: 10px 20px 0;
+    height: 100%;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.logo-instagram-link {
+    text-decoration: none;
+    height: 100%;
+    cursor: pointer;
+}
+
+.logo-instagram {
+    max-height: 80%;
+}
+
+.nav-avatar-bar {
+    height: 100%;
+}
+
+.nav-avatar {
+    border: 2px solid grey;
+    border-radius: 100%;
+    max-height: 50%;
+    margin: 2px;
+}
+
+.avatar {
+    background: url(./img/avatar.jpg) no-repeat center/100%;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.profile {
+    @include centerElement();
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 44px;
+    padding-top: 70px;
+}
+
+.profile-avatar, .profile-information {
+    padding: 40px 80px;
+}
+
+.username {
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 200;
+}
+
+.user-information {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.user-information {
+    & > span {
+        margin-right: 20px;
+        font-size: 16px;
+    }
+}
+    
+
+.profile-publications-container {
+    @include centerElement();
+}
+
+.nav-publications {
+    @include flexible ();
+    width: 100%;
+    justify-content: center;
+    border-top: 1px solid $shadow-color;
+    height: 53px;
+}
+
+.nav-publications-link {
+    font-size: 12px;
+}
+
+.profile-publications {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -14px;
+}
+
+.publication {
+    position: relative;
+    height: 293px;
+    width: 293px;
+    margin: 14px;
+    cursor: pointer;
+
+    &::before {
+        @include flexible ();
+        content: "Click to open";
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0;
+        transition: opacity .3s ease-out;
+        background-color: rgba(0, 0, 0, .5);
+        color: $shadow-color;
+        justify-content: center;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+    }
+}
+
+.publication-img {
+    @include fullSize();
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+}
+
+.nav-avatar-bar {
+    position: relative;
+}
+
+.header-popup-body {
+    position: absolute;
+    background-color: white;
+    top: 60%;
+    right: -70%;
+    box-shadow: 1px 1px 8px $shadow-color;
+    width: 220px;
+    padding: 5px 0;
+    border-radius: 4px;
+}
+
+.pop-up-profile-option {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    padding: 7px;
+    width: 100%;
+    letter-spacing: normal;
+    box-sizing: border-box;
+
+    &:hover {
+        background-color: #fafafa ;
+    }
+}
+
+.fas {
+    color: antiquewhite;
+}
+
+.fa-user-circle {
+    padding: 5px;
+}
+
+.fa-times {
+    @include alingPosition();
+    font-size: 25px;
+}
+
+.fa-border-all {
+    padding-right: 15px;
+    font-weight: 500;
+    color: black;
+}
+
+.arrowIcon {
+    position: absolute;
+}
+
+.carousel-arrow-wrapper {
+    @include flexible ();
+    position: absolute;
+    height: 100%;
+    font-size: 25px;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2.5rem;
+    cursor: pointer;
+    z-index: 1;
+
+    &:hover {
+        background-color: rgba(124, 124, 124, 0.667);
+    }
+}
+
+#carouselNextButton {
+    right: 0;
+}
+
+#fullscreenModal {
+    @include fullSize();
+    display: block;
+    position: fixed;
+    z-index: 4;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+}
+
+.fullscreen-img {
+    @include alingPosition();
+    margin: auto;
+    max-width: 640px;
+    max-height: 768px;
+    display: block;
+    cursor: pointer;
+}
+
+.close-button {
+    position: absolute;
+    padding: 2.5rem;
+    right: 0;
+    cursor: pointer;
+    z-index: 2;
+
+    &:hover {
+        background-color: rgba(124, 124, 124, 0.667);
+    }
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+#footer {
+    @include flexible ();
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.copyrigth {
+    padding: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    .feed {
+        font-size: 14px;
+    }
+
+    .avatar {
+        height: 75px;
+        width: 75px;
+    }
+
+    .profile-avatar, .profile-information {
+        padding: 10px 10px;
+    }
+
+    .user-information {
+        & > span {
+            margin-right: 10px;
+            font-size: 12px;
+        }
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .profile {
+        margin-bottom: 20px;
+    }
+
+    .profile-avatar, .profile-information {
+        padding: 20px 20px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .publication {
+        padding-bottom: 30%;
+        width: 30%;
+        margin: 0;
+        height: 0;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .profile-avatar, .profile-information {
+        padding: 20px 40px;
+    }
+
+    .publication {
+        margin: 10px;
+    }
+
+    .profile-publications {
+        margin: 0 -10px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1920px) {
+    .publication {
+        padding-bottom: 30%;
+        width: 30%;
+        height: 0;
+        margin: 10px;
+    }
+
+    .profile-publications {
+        margin: 0 -10px;
+    }
+
+    .feed {
+        max-width: 1024px;
+        font-size: 17px;
+    }
+
+    .avatar {
+        height: 170px;
+        width: 170px;
+    }
+
+    .user-information {
+        & > span {
+            margin-right: 25px;
+            font-size: 18px;
+        }
+    }
+}
