@@ -1,7 +1,7 @@
 
 # Instagram clone
 
-Instagram clone pet project with vanilla JavaScript, HTML/SCSS
+Instagram clone pet project with vanilla JavaScript, HTML, SCSS
 
 # How to run
 
